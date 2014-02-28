@@ -1,0 +1,264 @@
+# simple miro options file
+
+global {
+	# screen dimensions
+	width	512
+	height	512
+
+	# other options
+	background color 0, 0, .3
+
+	samplesX 3
+	samplesY 3
+}
+
+# camera options
+camera {
+	look at	 0, 0, 0
+	pos	0, 4, 9
+	up	0, 1, 0
+	fov	45
+
+	aperture size 0.60
+	focal point 0,0,-5
+}
+
+material_phong{
+	ma 0.3,0.3,0.3
+	md 0.8,0.1,0.1
+	ms 0.1,0.1,0.1
+	msp 200
+}
+
+push matrix
+	scale 1,1,1
+	mesh {
+	  load "Scenes/Obj/cube.obj"
+	}
+pop matrix
+
+#########################################################
+# left line
+#########################################################
+
+push matrix
+	material_phong{
+		md 0.8,0.8,0.0
+	}
+
+	sphere{
+		center -3,0,0
+		radius 1
+	}
+pop matrix
+
+push matrix
+	material_phong{
+		md 0.90,0.90,0.135
+	}
+
+	sphere{
+		center -3,0,-20
+		radius 1
+	}
+pop matrix
+
+push matrix
+	material_phong{
+		md 0.22,0.71,0.104
+	}
+
+	sphere{
+		center -3,0,-17
+		radius 1
+	}
+pop matrix
+
+push matrix
+	material_phong{
+		md 0.25,0.90,0.11
+	}
+
+	sphere{
+		center -3,0,-13
+		radius 1
+	}
+pop matrix
+
+push matrix
+	material_phong{
+		md 0.39,0.27,0.11
+	}
+
+	sphere{
+		center -3,0,-9
+		radius 1
+	}
+pop matrix
+
+push matrix
+	material_phong{
+		md 0.45,0.36,0.77
+	}
+
+	sphere{
+		center -3,0,-5
+		radius 1
+	}
+pop matrix
+
+#########################################################
+# right line
+#########################################################
+
+push matrix
+	material_phong{
+		md 0.8,0.0,0.8
+	}
+
+	sphere{
+		center 3,0,-20
+		radius 1
+	}
+pop matrix
+
+push matrix
+	material_phong{
+		md 0.8,0.4,0.8
+	}
+
+	sphere{
+		center 3,0,-17
+		radius 1
+	}
+pop matrix
+
+push matrix
+	material_phong{
+		md 0.8,0.2,0.6
+	}
+
+	sphere{
+		center 3,0,-13
+		radius 1
+	}
+pop matrix
+
+push matrix
+	material_phong{
+		md 0.2,0.8,0.8
+	}
+
+	sphere{
+		center 3,0,-9
+		radius 1
+	}
+pop matrix
+
+push matrix
+	material_phong{
+		md 0.1,0.2,0.5
+	}
+
+	sphere{
+		center 3,0,-6
+		radius 1
+	}
+pop matrix
+
+
+material_phong{
+	md 0.0,0.0,0.0
+	mr 0.8,0.8,0.8
+}
+
+push matrix
+	sphere{
+		center 3,0,0
+		radius 1	
+	}
+pop matrix 
+
+
+#########################################################
+# floor
+#########################################################
+
+material_phong{
+	md 0.5,0.5,0.5
+	mr 0.2,0.2,0.2
+}
+
+#rotate 90, 0, 0, 1
+triangle {
+  v1 100, -1, -100
+  v2 0, -1, 100
+  v3 -100, -1, -100
+  n1 0,1,0
+  n2 0,1,0
+  n3 0,1,0
+}
+
+
+#########################################################
+# lights
+#########################################################
+
+light directional {
+  dir -1, -5, -3
+  color 0.3, 0.3, 0.3
+}
+
+push matrix
+	material_phong{
+		me 1,1,1
+	}
+
+	translate 0,5,-5
+	rotate 90,1,0,0
+	scale 1,1,1
+
+	light area{
+		intensity 250
+	}
+pop matrix
+
+push matrix
+	material_phong{
+		me 1,1,1
+	}
+
+	translate 0,5,-10
+	rotate 90,1,0,0
+	scale 1,1,1
+
+	light area{
+		intensity 250
+	}
+pop matrix
+
+push matrix
+	material_phong{
+		me 1,1,1
+	}
+
+	translate 0,5,-15
+	rotate 90,1,0,0
+	scale 1,1,1
+
+	light area{
+		intensity 250
+	}
+pop matrix
+
+#light point {
+#	pos 1,5,7.5
+#	color 1,1,1
+#	wattage 500
+#}
+
+#light point {
+#	pos 1,5,-3
+#	color 1,1,1
+#	wattage 500
+#}

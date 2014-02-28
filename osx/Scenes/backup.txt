@@ -1,0 +1,98 @@
+bool BSPTree::IntersectTree(HitInfo& result, const Ray& ray,
+                    float tMin, float tMax)
+{
+	bool have_one = false;
+
+	// this is the bsp tree traversal technique
+	std::stack<BSP_stack_item> bspStack;
+	BSP_node *node = root;
+	float isect = MIRO_TMAX;
+	result.t = MIRO_TMAX;
+	float tmin,tmax;
+	BoundingBox sceneBox = getBoundingBox();
+
+
+	if (!sceneBox.intersect(ray,tmin,tmax))
+		return have_one;
+
+	while (node!=0){
+		
+		if (isect<tmin)
+			break;
+
+		if (!node->is_leaf){
+			// process interior node here
+
+			// computing ray and split plane interseciton
+			float t = (node->plane_pos - ray.o[node->axis]) * (1 / ray.d[node->axis]);
+			Vector3 pos = ray.o + t*ray.d;
+
+			// order children
+			BSP_node *first,*second;
+			if (ray.o[node->axis] < node->plane_pos){
+				first = node->left;
+				second = node->right;
+			}else{
+				first = node->right;
+				second = node->left;
+			}/*else{
+				if (ray.d[node->axis] < 0){
+					first = node->right;
+					second = node->left;
+				}else{
+					first = node->left;
+					second = node->right;	
+				}
+			}*/
+
+
+			// process children
+			if (t==0){
+				node = first;
+				BSP_stack_item item;
+				item.node = second;
+				item.tmin = t;
+				item.tmax = tmax;
+				bspStack.push(item);
+			}else if ( t>tmax || t<0){
+				node = first;
+			}else if ( t<tmin){
+				node = second;
+			}else{
+				node = first;
+				BSP_stack_item item;
+				item.node = second;
+				item.tmin = t;
+				item.tmax = tmax;
+				bspStack.push(item);
+			}
+
+		}else{
+			// checking for intersection in the leaf
+			ObjectList::iterator o;
+			for (o=node->obj_array.begin();o!=node->obj_array.end();o++)
+			{
+				HitInfo hit;
+				if ((*o)->Intersect(hit,ray)){
+					if (!have_one || hit.t<result.t){
+						result=hit;
+						have_one = true;
+					}
+				}
+			}
+			isect = result.t;
+
+			// geting items from stack
+			if (!bspStack.empty()){
+				BSP_stack_item bspItem = bspStack.top();
+				bspStack.pop();
+				node = bspItem.node;
+				tmin = bspItem.tmin;
+				tmax = bspItem.tmax;
+			}else{
+				node = 0;
+			}
+		}
+	}
+	return have_one;
+}

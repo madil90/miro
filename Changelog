@@ -1,0 +1,17 @@
+04-17-06:
+    bug fixes:
+    * parse.y:151: fixed bug (creating TriangleMesh instead of Triangle)
+    * ray.h:36: fixed const bug with Material pointer
+    * scene.h:25: made Trace function const
+    * triangleMesh.cpp:57: fixed bug, not setting material
+    * triangleMeshLoad.cpp:204: fixed bug, normal flipped
+
+    new features:
+    * bspTree.h: added a BSPTree class
+    * scene.[h|cpp]: replaced object list with a single BSPTree.
+    * scene.h: changed AddObject to just call the BSPTree's AddObject
+    * object.h,triangleMesh.[h|cpp]: modified the Refine function so it will
+      work easier with BSP trees.
+    * parse.y: for instancing, specifying a named mesh creates a BSPTree for
+      just that mesh, names the BSPTree, and adds the BSP tree into the scene
+

@@ -1,0 +1,59 @@
+# 20 bunnies over a big triangle
+global {
+	# screen dimensions
+	width	300
+	height	300
+
+	# other options
+	background color 0.0, 0.0, .2
+}
+
+# camera options
+camera {
+	look at	 0, 0, 0
+	pos	0, 5, 15
+	up	0, 1, 0
+	fov	45
+}
+
+light directional{
+	dir 0,-1,0
+	color 1,1,1
+}
+
+material_phong{
+	md 0.9,0.3,0.1
+}
+
+### 0
+push matrix
+scale 0.01,0.01,0.01
+mesh "bunny"{
+  group "Cube"
+  load "Scenes/Obj/box.obj"
+}
+pop matrix
+
+#### 1
+push matrix
+scale .3, 2, .7
+translate -1, .4, .3
+rotate 25, .3, .1, .6
+instance{
+	geometry "bunny"
+}
+pop matrix
+
+material_phong{
+	md 0.8039,0.6863,0.5843
+}
+
+# big triangle
+triangle {
+  v1 100, 0, -100
+  v2 0, 0, 100
+  v3 -100, 0, -100
+  n1 0,1,0
+  n2 0,1,0
+  n3 0,1,0
+}

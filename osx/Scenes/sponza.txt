@@ -1,0 +1,39 @@
+# sponza
+# This is just an example sponza scene,
+# you are free to move the camera to an interesting location
+global {
+	# screen dimensions
+	width	640
+	height	480
+
+	# other options
+	background color 0, 0, .2
+
+	samplesX 5
+	samplesY 5
+
+	path trace 0
+}
+
+# camera options
+camera {
+	look at	 0, 2.5, -1
+	pos	8, 1.5, 1
+	up	0, 1, 0
+	fov	55
+}
+
+light directional{
+	dir 0.8197,-0.5635,0.1025
+	color 1,1,1
+}
+
+material_phong{
+	md 0.90,0.894,0.847
+	ma 0.90,0.894,0.847
+}
+
+mesh {
+	group "all"
+	load "Scenes/Obj/sponza.obj"
+}
