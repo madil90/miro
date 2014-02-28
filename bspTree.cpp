@@ -71,7 +71,7 @@ void BSPTree::PreCalc()
 void BSPTree::RenderSplitPlane(int node_axis, Vector3 aboveMin, Vector3 belowMax)
 {
 	// render the plane
-	glColor3f(0.0f, 1.0f, 0.0f);
+	glColor3f(1.0f, 0.0f, 0.0f);
 
 	// figuring out other axis
 	bool isx = node_axis == 0, isy = node_axis == 1;
@@ -107,7 +107,6 @@ void BSPTree::RenderNode(BSP_node* node,BoundingBox box,float &boxTimes,int dept
 
 
 	if (node->is_leaf){
-		//box.RenderGL();
 		return;
 	}
 	

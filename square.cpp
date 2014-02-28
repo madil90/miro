@@ -3,7 +3,6 @@
 Square::Square()
 	: m_vCenter(0,0,0)
 {
-
 }
 
 // renderGL function

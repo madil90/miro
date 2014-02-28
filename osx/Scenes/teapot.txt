@@ -6,6 +6,9 @@ global {
 
 	# other options
 	background color 0, 0, .2
+
+	samplesX 5
+	samplesY 5
 }
 
 # camera options

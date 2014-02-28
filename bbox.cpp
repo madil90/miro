@@ -36,7 +36,7 @@ void BoundingBox::RenderGL()
     bounds[6] = Vector3(minimum.x, maximum.y, maximum.z);
     bounds[7] = Vector3(minimum.x, minimum.y, maximum.z);
 
-	glColor3f(0.0f, 1.0f, 0.0f);
+	glColor3f(1.0f, 0.0f, 0.0f);
 
     glBegin(GL_LINE_LOOP);
         glVertex3f(bounds[0].x, bounds[0].y, bounds[0].z);
