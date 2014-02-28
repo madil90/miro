@@ -21,6 +21,7 @@ camera {
 
 # drawing square
 push matrix
+
 	# set material here
 	material_phong{
 		md 0.93333,0.835,0.717
@@ -29,8 +30,9 @@ push matrix
 	
 	translate 0,1,-5
 	#rotate 90,0,0,1
+	scale 0.1,0.1,0.1
 	mesh "teapot"{
-	load "Scenes/Obj/teapot.obj"
+	load "Scenes/Obj/teapot_smooth.obj"
 	}
 pop matrix
 

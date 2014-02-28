@@ -146,7 +146,7 @@ void TriangleMesh::LoadObj(FILE* fp, char* group)
 
     if (nt)
     { // got texture coordinates
-        std::cout<<"This model has texture coordinates"<<std::endl;
+        Debug("Texture Coordinates found \n");
 
         m_pTexCoords = new VectorR2[nt];
         m_pTexCoordIndices = new TupleI3[nf];
@@ -216,6 +216,10 @@ void TriangleMesh::LoadObj(FILE* fp, char* group)
                 m_pNormalIndices[m_iNumTris].z = n-1;
             if (t)
                 m_pTexCoordIndices[m_iNumTris].z = t-1;
+
+            // Debug("Vertice loaded : %d,%d,%d \n",m_pVertexIndices[m_iNumTris].x
+            //                                  ,m_pVertexIndices[m_iNumTris].y
+            //                                  ,m_pVertexIndices[m_iNumTris].z);
 
             if (!n)
             {   // if no normal was supplied

@@ -7,8 +7,8 @@ global {
 	# other options
 	background color 0, 0, .2
 
-	samplesX 6
-	samplesY 6
+	samplesX 1
+	samplesY 1
 
 	path trace 0
 }
@@ -69,6 +69,7 @@ push matrix
 			load "Scenes/Obj/box.obj"
 		}
 pop matrix
+
 
 push matrix
 	scale 0.01,0.01,0.01
