@@ -1,0 +1,112 @@
+# Cornell Box Scene
+global {
+	# screen dimensions
+	width	512
+	height	512
+
+	# other options
+	background color 0, 0, .2
+
+	samplesX 6
+	samplesY 6
+
+	bsp splits 8
+
+	photon mapping 1
+	global photons 250000
+	photons estimate 200
+	final gather 7
+}
+
+# camera options
+camera {
+	dir	 0, 0, 1
+	pos	2.78, 2.73, -8.00
+	up	0, 1, 0
+	fov	39.3076
+}
+
+########################################
+# area light
+########################################
+
+push matrix
+	material_phong{
+		me 1,1,1
+	}
+
+	translate 2.78,5.47,2.295
+	scale 1.3,1.0,1.05
+	rotate -90,1,0,0
+	light area{
+		samples 4
+		render 1
+		intensity 75
+	}
+pop matrix
+
+########################################
+# point light
+########################################
+
+#light point{
+#	pos 2.78, 5.48, 2.295
+#	color 1,1,1
+#	wattage 150
+#}
+
+
+material_phong{
+	md 0.750, 0.750, 0.750
+	ma 0.4,0.4,0.4
+}
+
+push matrix
+	scale 0.01,0.01,0.01
+		mesh{
+			group "Cube"
+			load "Scenes/Obj/box.obj"
+		}
+pop matrix
+
+push matrix
+	scale 0.01,0.01,0.01
+		mesh{
+			group "Cube__1"
+			load "Scenes/Obj/box.obj"
+		}
+pop matrix
+
+push matrix
+	scale 0.01,0.01,0.01
+		mesh{
+			group "IndexedFaceSet"
+			load "Scenes/Obj/box.obj"
+		}
+pop matrix
+
+material_phong{
+	md 0.0,0.6,0.0 
+	ma 0.2,0.2,0.2
+}
+
+push matrix
+	scale 0.01,0.01,0.01
+		mesh{
+			group "IndexedFaceSet__1"
+			load "Scenes/Obj/box.obj"
+		}
+pop matrix
+
+material_phong{
+	md 0.5, 0.0, 0.0
+	ma 0.3,0.3,0.3
+}
+
+push matrix
+	scale 0.01,0.01,0.01
+		mesh{
+			group "IndexedFaceSet__2"
+			load "Scenes/Obj/box.obj"
+		}
+pop matrix

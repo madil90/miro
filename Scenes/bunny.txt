@@ -1,0 +1,34 @@
+# test scene #1
+global {
+	# screen dimensions
+	width	512
+	height	512
+
+	# other options
+	background color 0, 0, .2
+
+	samplesX 7
+	samplesY 7
+}
+
+# camera options
+camera {
+	look at	 0, 0, 0
+	pos	0, 5, 5
+	up	0, 1, 0
+	fov	45
+}
+
+light point{
+	pos 0,3,3
+	color 1,1,1
+	wattage 33
+}
+
+material_phong{
+	md 0.0,0.2,0.833
+}
+
+mesh { 
+   load "Scenes/Obj/bunny.obj"
+}

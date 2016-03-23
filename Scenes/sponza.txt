@@ -1,0 +1,60 @@
+# sponza
+# This is just an example sponza scene,
+global {
+	# screen dimensions
+	width	640
+	height	480
+
+	# other options
+	background color 0, 0, .2
+
+	samplesX 6
+	samplesY 6
+
+	bsp splits 6
+
+	photon mapping 1
+	global photons 500000
+	photons estimate 500
+	final gather 5
+}
+
+# camera options
+camera {
+	dir -0.995796,-0.058761,-0.07026
+	pos	14.8069,7.718194,1.696167
+	up	0, 1, 0
+	fov	55
+}
+
+#light directional{
+#	dir 0.8197,-0.5635,0.1025
+#	color 1,1,1
+#}
+
+push matrix
+	material_phong{
+		me 1,1,1
+	}
+
+	translate 0,7,0
+	scale 6,1,2
+	rotate -90,1,0,0
+
+	light area{
+		samples 4
+		intensity 17
+
+		render 0
+	}
+pop matrix
+
+material_phong{
+	md 0.90,0.894,0.847
+	ma 0.90,0.894,0.847
+}
+
+mesh "sponza"{
+	group "all"
+	load "Scenes/Obj/sponza.obj"
+}
